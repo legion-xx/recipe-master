@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-source-sans: 'Source Sans 3', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-kitchen-200 dark:border-kitchen-700;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-kitchen-900 dark:bg-kitchen-950 dark:text-cream-100;
+    @apply font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-100 dark:bg-kitchen-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-kitchen-300 dark:bg-kitchen-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-kitchen-400 dark:bg-kitchen-500;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary-200 dark:bg-primary-800 text-kitchen-900 dark:text-cream-50;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-cream-50 dark:ring-offset-kitchen-950;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-kitchen-900 rounded-2xl shadow-sm;
+    @apply border border-cream-200 dark:border-kitchen-800;
+    @apply transition-shadow duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:shadow-kitchen-200/50 dark:hover:shadow-kitchen-950/50;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-4 py-2.5 rounded-xl font-medium;
+    @apply transition-all duration-200;
+    @apply focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white;
+    @apply hover:bg-primary-600 active:bg-primary-700;
+    @apply focus-visible:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-sage-500 text-white;
+    @apply hover:bg-sage-600 active:bg-sage-700;
+    @apply focus-visible:ring-sage-500;
+  }
+
+  .btn-outline {
+    @apply border-2 border-kitchen-300 dark:border-kitchen-600;
+    @apply text-kitchen-700 dark:text-cream-200;
+    @apply hover:bg-kitchen-100 dark:hover:bg-kitchen-800;
+    @apply focus-visible:ring-kitchen-400;
+  }
+
+  .btn-ghost {
+    @apply text-kitchen-600 dark:text-cream-300;
+    @apply hover:bg-kitchen-100 dark:hover:bg-kitchen-800;
+    @apply focus-visible:ring-kitchen-400;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white;
+    @apply hover:bg-red-600 active:bg-red-700;
+    @apply focus-visible:ring-red-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm rounded-lg;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-lg rounded-2xl;
+  }
+
+  .btn-icon {
+    @apply p-2.5 rounded-xl;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl;
+    @apply bg-white dark:bg-kitchen-900;
+    @apply border border-kitchen-200 dark:border-kitchen-700;
+    @apply text-kitchen-900 dark:text-cream-100;
+    @apply placeholder:text-kitchen-400 dark:placeholder:text-kitchen-500;
+    @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
+    @apply transition-colors duration-200;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  /* Label styles */
+  .label {
+    @apply block text-sm font-medium text-kitchen-700 dark:text-cream-300 mb-1.5;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400;
+  }
+
+  .badge-sage {
+    @apply bg-sage-100 text-sage-700 dark:bg-sage-900/30 dark:text-sage-400;
+  }
+
+  .badge-outline {
+    @apply border border-kitchen-300 dark:border-kitchen-600 text-kitchen-600 dark:text-cream-400;
+  }
+
+  /* Ingredient highlighting - ADHD friendly */
+  .ingredient-highlight {
+    @apply font-semibold text-primary-600 dark:text-primary-400;
+  }
+
+  /* Section headers */
+  .section-header {
+    @apply font-display text-2xl font-semibold text-kitchen-800 dark:text-cream-100;
+  }
+
+  /* Recipe step */
+  .recipe-step {
+    @apply relative pl-12 pb-8;
+  }
+
+  .recipe-step::before {
+    @apply content-[''] absolute left-4 top-8 bottom-0 w-0.5 bg-kitchen-200 dark:bg-kitchen-700;
+  }
+
+  .recipe-step:last-child::before {
+    @apply hidden;
+  }
+
+  .step-number {
+    @apply absolute left-0 top-0 w-8 h-8 rounded-full;
+    @apply bg-primary-500 text-white;
+    @apply flex items-center justify-center;
+    @apply text-sm font-bold;
+  }
+
+  /* Timer styles */
+  .timer-active {
+    @apply animate-timer-pulse;
+  }
+
+  /* Drag and drop styles */
+  .dragging {
+    @apply opacity-50 scale-105 shadow-2xl;
+  }
+
+  .drop-target {
+    @apply ring-2 ring-primary-500 ring-dashed;
+  }
+
+  /* Modal backdrop */
+  .modal-backdrop {
+    @apply fixed inset-0 bg-kitchen-950/60 backdrop-blur-sm z-50;
+  }
+
+  /* Sidebar styles */
+  .sidebar {
+    @apply fixed left-0 top-0 h-full w-64;
+    @apply bg-white dark:bg-kitchen-900;
+    @apply border-r border-kitchen-200 dark:border-kitchen-800;
+    @apply shadow-lg;
+  }
+
+  /* Nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl;
+    @apply text-kitchen-600 dark:text-cream-400;
+    @apply hover:bg-cream-100 dark:hover:bg-kitchen-800;
+    @apply transition-colors duration-200;
+  }
+
+  .nav-item-active {
+    @apply bg-primary-50 dark:bg-primary-900/20;
+    @apply text-primary-600 dark:text-primary-400;
+    @apply font-medium;
+  }
+
+  /* Print styles for recipe PDF */
+  @media print {
+    .no-print {
+      @apply hidden !important;
+    }
+
+    .print-only {
+      @apply block !important;
+    }
+
+    body {
+      @apply bg-white text-black;
+    }
+
+    .card {
+      @apply shadow-none border-none;
+    }
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-500 to-sage-500;
+  }
+
+  /* Texture overlay */
+  .texture-grain {
+    position: relative;
+  }
+
+  .texture-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 dark:bg-kitchen-900/80;
+    @apply backdrop-blur-xl;
+    @apply border border-white/20 dark:border-kitchen-700/50;
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
